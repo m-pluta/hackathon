@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Investment Calculator</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <img
+            src="{{ url_for('static', filename='logo.png') }}"
+            alt="Site Logo"
+          />
+        </div>
+        <div class="input-container">
+          <form id="stock-form">
+            <label for="stock">Stock:</label>
+            <input type="text" id="stock" name="stock" required />
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required />
+
+            <label for="amount">Investment ($):</label>
+            <input type="number" id="amount" name="amount" required />
+
+            <label for="comparison">Compare With:</label>
+            <select id="comparison" name="comparison">
+              <option value="ARM" selected>ARM</option>
+              <option value="^GSPC">S&P 500</option>
+              <option value="TSLA">Tesla</option>
+              <option value="GOOGL">Google</option>
+              <option value="AAPL">Apple</option>
+              <option value="MSFT">Microsoft</option>
+              <option value="NVDA">Nvidia</option>
+            </select>
+
+            <button type="submit">Calculate</button>
+          </form>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="content-container">
+        <div id="graph"></div>
+        <div id="result"></div>
+      </div>
+      <div id="history"></div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='confetti.js') }}"></script>
+  </body>
+</html>
